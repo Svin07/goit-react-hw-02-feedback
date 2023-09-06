@@ -18,8 +18,7 @@ export class App extends Component {
   badClickIncrement = () => this.setState(prev => ({ bad: prev.bad + 1 }));
 
   countTotalFeedback() {
-    let total = 0;
-    return (total = this.state.good + this.state.neutral + this.state.bad);
+    return this.state.good + this.state.neutral + this.state.bad;
   }
 
   countPositiveFeedbackPercentage() {
