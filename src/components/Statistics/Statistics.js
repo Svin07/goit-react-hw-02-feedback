@@ -5,8 +5,8 @@ export default function Statistics({
   good,
   neutral,
   bad,
+  feedbackPercentage,
   total,
-  positivePercentage,
 }) {
   return (
     <div className={css.statcontainer}>
@@ -25,7 +25,10 @@ export default function Statistics({
           <p className={css.statitem}>Total: {total}</p>
         </li>
         <li>
-          <p className={css.statitem}>Positive Fidback: {positivePercentage}</p>
+          <p className={css.statitem}>
+            Positive Feedback:
+            {feedbackPercentage} %
+          </p>
         </li>
       </ul>
     </div>
@@ -36,8 +39,6 @@ Statistics.propTypes = {
   good: PropTypes.number.isRequired,
   neutral: PropTypes.number.isRequired,
   bad: PropTypes.number.isRequired,
-  total: PropTypes.number.isRequired,
-  positivePercentage: PropTypes.number.isRequired,
 };
 
 // Please leave feedback
