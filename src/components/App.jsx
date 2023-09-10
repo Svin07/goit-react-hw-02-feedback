@@ -12,10 +12,19 @@ export class App extends Component {
     bad: 0,
   };
 
-  goodClickIncrement = () => this.setState(prev => ({ good: prev.good + 1 }));
-  neutralClickIncrement = () =>
-    this.setState(prev => ({ neutral: prev.neutral + 1 }));
-  badClickIncrement = () => this.setState(prev => ({ bad: prev.bad + 1 }));
+  onLeaveFeedback = e => {
+    const option = e.target.textContent;
+    this.setState(prevState => {
+      return {
+        [option]: prevState[option] + 1,
+      };
+    });
+  };
+
+  // goodClickIncrement = () => this.setState(prev => ({ good: prev.good + 1 }));
+  // neutralClickIncrement = () =>
+  //   this.setState(prev => ({ neutral: prev.neutral + 1 }));
+  // badClickIncrement = () => this.setState(prev => ({ bad: prev.bad + 1 }));
 
   countTotalFeedback() {
     return this.state.good + this.state.neutral + this.state.bad;
@@ -34,9 +43,8 @@ export class App extends Component {
       <div>
         <SectionTitle maintitle="Please leave feedback">
           <FeedbackOptions
-            goodClickIncrement={this.goodClickIncrement}
-            neutralClickIncrement={this.neutralClickIncrement}
-            badClickIncrement={this.badClickIncrement}
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.onLeaveFeedback}
           />
           {this.state.good || this.state.neutral || this.state.bad ? (
             <Statistics

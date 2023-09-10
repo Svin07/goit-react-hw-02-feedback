@@ -1,26 +1,19 @@
 // import PropTypes from 'prop-types';
 import css from './FeedbackOptions.module.css';
 
-export default function FeedbackOptions({
-  goodClickIncrement,
-  neutralClickIncrement,
-  badClickIncrement,
-}) {
+export default function FeedbackOptions({ options, onLeaveFeedback }) {
   return (
     <div className={css.container}>
-      <button onClick={goodClickIncrement} type="button" className={css.button}>
-        Good
-      </button>
-      <button
-        onClick={neutralClickIncrement}
-        type="button"
-        className={css.button}
-      >
-        Neutral
-      </button>
-      <button onClick={badClickIncrement} type="button" className={css.button}>
-        Bad
-      </button>
+      {options.map(option => (
+        <button
+          key={option}
+          onClick={onLeaveFeedback}
+          type="button"
+          className={css.button}
+        >
+          {option}
+        </button>
+      ))}
     </div>
   );
 }
